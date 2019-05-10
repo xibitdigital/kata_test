@@ -18,7 +18,7 @@ describe("Gilded Rose", function() {
   });
 
   describe("`Aged Brie`", () => {
-    it("should be a conjured Item", () => {
+    it("should be an `Aged Brie` Item", () => {
       const expectedResult = true;
       const actualResult = isAgedBrie(new Item("Aged Brie", 0, 0));
 
@@ -39,7 +39,7 @@ describe("Gilded Rose", function() {
   });
 
   describe("`Sulfuras`, Hand of Ragnaros", () => {
-    it("should be a conjured Item", () => {
+    it("should be a `Sulfuras` Item", () => {
       const expectedResult = true;
       const actualResult = isSulfuras(new Item("Sulfuras, stuff", 0, 0));
 
@@ -55,7 +55,7 @@ describe("Gilded Rose", function() {
   });
 
   describe("`Backstage passes`", () => {
-    it("should be a conjured Item", () => {
+    it("should be a `Backstage passes` Item", () => {
       const expectedResult = true;
       const actualResult = isBackstagePass(new Item("Backstage passes, stuff", 0, 0));
 
@@ -94,7 +94,7 @@ describe("Gilded Rose", function() {
   });
 
   describe("`Conjured` stuff", () => {
-    it("should be a conjured Item", () => {
+    it("should be a `Conjured` Item", () => {
       const expectedResult = true;
       const actualResult = isConjured(new Item("Conjured stuff", 0, 0));
 
