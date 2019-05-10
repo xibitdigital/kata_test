@@ -17,10 +17,16 @@ export class Item {
 const updateQuality = R.reduce(
   (acc, item: Item) => {
     if (isAgedBrie(item)) {
-    } else if (isSufuras(item)) {
+    } else if (isSulfuras(item)) {
       //  nothing to do here
     } else if (isBackstagePass(item)) {
     } else {
+      // all other items
+      if (item.sellIn == 0 && item.quality == 0) {
+        // nothing to do
+      } else if (item.sellIn == 0 && item.quality > 0) {
+        item.quality = item.quality - 2;
+      }
     }
 
     return acc.concat(item);
@@ -33,7 +39,7 @@ const isAgedBrie = R.compose(
   (x: Item) => R.prop("name")(x)
 );
 
-const isSufuras = R.compose(
+const isSulfuras = R.compose(
   R.contains("Sulfuras"),
   (x: Item) => R.prop("name")(x)
 );
