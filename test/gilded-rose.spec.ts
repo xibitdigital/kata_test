@@ -1,4 +1,5 @@
-import { Item, GildedRose } from "../app/gilded-rose";
+import { GildedRose } from "../app/gilded-rose";
+import { Item } from "../app/items";
 
 describe("Gilded Rose", function() {
   describe("All Other Items", () => {

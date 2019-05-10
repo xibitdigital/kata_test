@@ -1,18 +1,7 @@
 "use strict";
 
 import * as R from "ramda";
-
-export class Item {
-  name: string;
-  sellIn: number;
-  quality: number;
-
-  constructor(name, sellIn, quality) {
-    this.name = name;
-    this.sellIn = sellIn;
-    this.quality = quality;
-  }
-}
+import { Item, isAgedBrie, isBackstagePass, isSulfuras } from "./items";
 
 const updateQuality = R.reduce(
   (acc, item: Item) => {
@@ -49,21 +38,6 @@ const updateQuality = R.reduce(
     return acc.concat(item);
   },
   [] as Item[]
-);
-
-const isAgedBrie = R.compose(
-  R.contains("Aged Brie"),
-  (x: Item) => R.prop("name")(x)
-);
-
-const isSulfuras = R.compose(
-  R.contains("Sulfuras"),
-  (x: Item) => R.prop("name")(x)
-);
-
-const isBackstagePass = R.compose(
-  R.contains("Backstage passes"),
-  (x: Item) => R.prop("name")(x)
 );
 
 export class GildedRose {
