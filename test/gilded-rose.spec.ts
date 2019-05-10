@@ -1,7 +1,7 @@
 import { Item, GildedRose } from "../app/gilded-rose";
 
 describe("Gilded Rose", function() {
-  describe.only("All Other Items", () => {
+  describe("All Other Items", () => {
     it("should degrade quality twice as fast once the sell by date has passed ", () => {
       const gildedRose = new GildedRose([new Item("foo", 0, 4)]);
       const items = gildedRose.updateQuality();
@@ -16,7 +16,7 @@ describe("Gilded Rose", function() {
     });
   });
 
-  describe("`Aged Brie`", () => {
+  describe.only("`Aged Brie`", () => {
     it("should increase quality the older it gets", () => {
       const gildedRose = new GildedRose([new Item("Aged Brie", 0, 0)]);
       const items = gildedRose.updateQuality();

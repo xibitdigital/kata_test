@@ -17,6 +17,11 @@ export class Item {
 const updateQuality = R.reduce(
   (acc, item: Item) => {
     if (isAgedBrie(item)) {
+      if (item.quality === 50) {
+        // nothing to do
+      } else {
+        item.quality = item.quality + 2;
+      }
     } else if (isSulfuras(item)) {
       //  nothing to do here
     } else if (isBackstagePass(item)) {
