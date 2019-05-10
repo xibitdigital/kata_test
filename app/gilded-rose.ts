@@ -27,13 +27,21 @@ const updateQuality = R.reduce(
         item.quality = item.quality + 1;
       }
     } else if (isConjured(item)) {
-      //  TODO to implement
+      if (item.sellIn == 0 && item.quality == 0) {
+        // nothing to do
+      } else if (item.sellIn == 0 && item.quality > 0) {
+        item.quality = item.quality - 4;
+      } else {
+        item.quality = item.quality - 2;
+      }
     } else {
       // all other items
       if (item.sellIn == 0 && item.quality == 0) {
         // nothing to do
       } else if (item.sellIn == 0 && item.quality > 0) {
         item.quality = item.quality - 2;
+      } else {
+        item.quality = item.quality - 1;
       }
     }
 
