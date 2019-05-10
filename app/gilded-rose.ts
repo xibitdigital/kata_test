@@ -1,7 +1,7 @@
 "use strict";
 
 import * as R from "ramda";
-import { Item, isAgedBrie, isBackstagePass, isSulfuras } from "./items";
+import { Item, isAgedBrie, isBackstagePass, isSulfuras, isConjured } from "./items";
 
 const updateQuality = R.reduce(
   (acc, item: Item) => {
@@ -26,6 +26,8 @@ const updateQuality = R.reduce(
       } else {
         item.quality = item.quality + 1;
       }
+    } else if (isConjured(item)) {
+      //  TODO to implement
     } else {
       // all other items
       if (item.sellIn == 0 && item.quality == 0) {
