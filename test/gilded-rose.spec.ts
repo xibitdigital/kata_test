@@ -1,5 +1,5 @@
 import { GildedRose } from "../app/gilded-rose";
-import { Item } from "../app/items";
+import { Item, isConjured } from "../app/items";
 
 describe("Gilded Rose", function() {
   describe("All Other Items", () => {
@@ -72,6 +72,15 @@ describe("Gilded Rose", function() {
       const items = gildedRose.updateQuality();
 
       expect(items[0].quality).toEqual(50);
+    });
+  });
+
+  describe("`Conjured` stuff", () => {
+    it("should be a conjured Item", () => {
+      const expectedResult = true;
+      const actualResult = isConjured(new Item("Conjured stuff", 0, 0));
+
+      expect(actualResult).toEqual(expectedResult);
     });
   });
 });
