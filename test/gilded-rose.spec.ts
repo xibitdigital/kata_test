@@ -9,6 +9,12 @@ describe("Gilded Rose", function() {
 
       expect(items[0].quality).toEqual(2);
     });
+    it("should decrease quality twice as fast normal items", () => {
+      const gildedRose = new GildedRose([new Item("foo", 2, 2)]);
+      const items = gildedRose.updateQuality();
+
+      expect(items[0].quality).toEqual(1);
+    });
     it("should never have negative quality", () => {
       const gildedRose = new GildedRose([new Item("foo", 0, 0)]);
       const items = gildedRose.updateQuality();
@@ -99,6 +105,18 @@ describe("Gilded Rose", function() {
       const actualResult = isConjured(new Item("Conjured stuff", 0, 0));
 
       expect(actualResult).toEqual(expectedResult);
+    });
+    it("should decrease quality twice as fast normal items", () => {
+      const gildedRose = new GildedRose([new Item("Conjured stuff", 2, 2)]);
+      const items = gildedRose.updateQuality();
+
+      expect(items[0].quality).toEqual(0);
+    });
+    it("should degrade quality twice as fast as normal items once the sell by date has passed ", () => {
+      const gildedRose = new GildedRose([new Item("Conjured stuff", 0, 4)]);
+      const items = gildedRose.updateQuality();
+
+      expect(items[0].quality).toEqual(0);
     });
   });
 });
