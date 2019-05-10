@@ -17,15 +17,15 @@ import {
 const updateQuality = R.reduce(
   (acc, item: Item) => {
     if (isAgedBrie(item)) {
-      updateBrieQuality(item);
+      item = updateBrieQuality(item);
     } else if (isSulfuras(item)) {
-      updateSulfurasQuality(item);
+      item = updateSulfurasQuality(item);
     } else if (isBackstagePass(item)) {
-      updateBackstagePassQuality(item);
+      item = updateBackstagePassQuality(item);
     } else if (isConjured(item)) {
-      updateConjuredQuality(item);
+      item = updateConjuredQuality(item);
     } else {
-      updateAllOthersQuality(item);
+      item = updateAllOthersQuality(item);
     }
     return acc.concat(item);
   },
