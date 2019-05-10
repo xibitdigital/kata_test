@@ -41,7 +41,7 @@ describe("Gilded Rose", function() {
     });
   });
 
-  describe.only("`Backstage passes`", () => {
+  describe("`Backstage passes`", () => {
     it("should increase quality the older it gets", () => {
       const gildedRose = new GildedRose([new Item("Backstage passes to a TAFKAL80ETC concert", 50, 0)]);
       const items = gildedRose.updateQuality();
@@ -60,8 +60,8 @@ describe("Gilded Rose", function() {
 
       expect(items[0].quality).toEqual(3);
     });
-    it.only("should be 0 quality on expiration", () => {
-      const gildedRose = new GildedRose([new Item("Backstage passes to a TAFKAL80ETC concert", 1, 1)]);
+    it("should be 0 quality on expiration", () => {
+      const gildedRose = new GildedRose([new Item("Backstage passes to a TAFKAL80ETC concert", 0, 1)]);
       const items = gildedRose.updateQuality();
 
       expect(items[0].quality).toEqual(0);
