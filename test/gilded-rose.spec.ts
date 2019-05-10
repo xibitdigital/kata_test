@@ -1,5 +1,5 @@
 import { GildedRose } from "../app/gilded-rose";
-import { Item, isConjured } from "../app/items";
+import { Item, isConjured, isAgedBrie, isBackstagePass, isSulfuras } from "../app/items";
 
 describe("Gilded Rose", function() {
   describe("All Other Items", () => {
@@ -18,6 +18,12 @@ describe("Gilded Rose", function() {
   });
 
   describe("`Aged Brie`", () => {
+    it("should be a conjured Item", () => {
+      const expectedResult = true;
+      const actualResult = isAgedBrie(new Item("Aged Brie", 0, 0));
+
+      expect(actualResult).toEqual(expectedResult);
+    });
     it("should increase quality the older it gets", () => {
       const gildedRose = new GildedRose([new Item("Aged Brie", 0, 0)]);
       const items = gildedRose.updateQuality();
@@ -33,6 +39,12 @@ describe("Gilded Rose", function() {
   });
 
   describe("`Sulfuras`, Hand of Ragnaros", () => {
+    it("should be a conjured Item", () => {
+      const expectedResult = true;
+      const actualResult = isSulfuras(new Item("Sulfuras, stuff", 0, 0));
+
+      expect(actualResult).toEqual(expectedResult);
+    });
     it("should never be sold or quality decreased", () => {
       const gildedRose = new GildedRose([new Item("Sulfuras, Hand of Ragnaros", 50, 0)]);
       const items = gildedRose.updateQuality();
@@ -43,6 +55,12 @@ describe("Gilded Rose", function() {
   });
 
   describe("`Backstage passes`", () => {
+    it("should be a conjured Item", () => {
+      const expectedResult = true;
+      const actualResult = isBackstagePass(new Item("Backstage passes, stuff", 0, 0));
+
+      expect(actualResult).toEqual(expectedResult);
+    });
     it("should increase quality the older it gets", () => {
       const gildedRose = new GildedRose([new Item("Backstage passes to a TAFKAL80ETC concert", 50, 0)]);
       const items = gildedRose.updateQuality();
