@@ -25,6 +25,18 @@ const updateQuality = R.reduce(
     } else if (isSulfuras(item)) {
       //  nothing to do here
     } else if (isBackstagePass(item)) {
+      if (item.sellIn === 0) {
+        item.quality = 0;
+        // nothing to do
+      } else if (item.sellIn === 0 || item.quality === 50) {
+        // nothing to do
+      } else if (item.sellIn <= 10 && item.sellIn > 5) {
+        item.quality = item.quality + 2;
+      } else if (item.sellIn <= 5 && item.sellIn > 0) {
+        item.quality = item.quality + 3;
+      } else {
+        item.quality = item.quality + 1;
+      }
     } else {
       // all other items
       if (item.sellIn == 0 && item.quality == 0) {
