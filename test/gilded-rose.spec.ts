@@ -9,7 +9,7 @@ describe("Gilded Rose", function() {
 
       expect(items[0].quality).toEqual(2);
     });
-    it("should decrease quality twice as fast normal items", () => {
+    it("should decrease quality", () => {
       const gildedRose = new GildedRose([new Item("foo", 2, 2)]);
       const items = gildedRose.updateQuality();
 

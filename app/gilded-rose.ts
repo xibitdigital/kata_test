@@ -1,50 +1,32 @@
 "use strict";
 
 import * as R from "ramda";
-import { Item, isAgedBrie, isBackstagePass, isSulfuras, isConjured } from "./items";
+import {
+  Item,
+  isAgedBrie,
+  isBackstagePass,
+  isSulfuras,
+  isConjured,
+  updateBackstagePassQuality,
+  updateSulfurasQuality,
+  updateBrieQuality,
+  updateConjuredQuality,
+  updateAllOthersQuality
+} from "./items";
 
 const updateQuality = R.reduce(
   (acc, item: Item) => {
     if (isAgedBrie(item)) {
-      if (item.quality === 50) {
-        // nothing to do
-      } else {
-        item.quality = item.quality + 2;
-      }
+      item = updateBrieQuality(item);
     } else if (isSulfuras(item)) {
-      //  nothing to do here
+      item = updateSulfurasQuality(item);
     } else if (isBackstagePass(item)) {
-      if (item.sellIn === 0) {
-        item.quality = 0;
-        // nothing to do
-      } else if (item.sellIn === 0 || item.quality === 50) {
-        // nothing to do
-      } else if (item.sellIn <= 10 && item.sellIn > 5) {
-        item.quality = item.quality + 2;
-      } else if (item.sellIn <= 5 && item.sellIn > 0) {
-        item.quality = item.quality + 3;
-      } else {
-        item.quality = item.quality + 1;
-      }
+      item = updateBackstagePassQuality(item);
     } else if (isConjured(item)) {
-      if (item.sellIn == 0 && item.quality == 0) {
-        // nothing to do
-      } else if (item.sellIn == 0 && item.quality > 0) {
-        item.quality = item.quality - 4;
-      } else {
-        item.quality = item.quality - 2;
-      }
+      item = updateConjuredQuality(item);
     } else {
-      // all other items
-      if (item.sellIn == 0 && item.quality == 0) {
-        // nothing to do
-      } else if (item.sellIn == 0 && item.quality > 0) {
-        item.quality = item.quality - 2;
-      } else {
-        item.quality = item.quality - 1;
-      }
+      item = updateAllOthersQuality(item);
     }
-
     return acc.concat(item);
   },
   [] as Item[]
@@ -58,8 +40,6 @@ export class GildedRose {
   }
 
   updateQuality() {
-    this.items = updateQuality(this.items);
-
-    return this.items;
+    return updateQuality(this.items);
   }
 }

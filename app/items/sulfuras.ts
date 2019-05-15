@@ -7,3 +7,5 @@ export const isSulfuras = R.compose(
   R.contains("Sulfuras"),
   (x: Item) => R.prop("name")(x)
 );
+
+export const updateSulfurasQuality = (item: Item) => item;
